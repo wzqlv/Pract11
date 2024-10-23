@@ -18,6 +18,7 @@ private:
     double calories;
 
 public:
+
     Product(int id = 0, const string& name = "", const string& manufacturer = "", double price = 0.0, int shelfLife = 0, int quantity = 0, const string& composition = "", double calories = 0.0);
 
     int getId() const;
@@ -41,6 +42,8 @@ public:
     void printInfo() const;
 
     friend istream& operator>>(istream& in, Product& product);
+
+    friend ostream& operator<<(ostream& out, const Product& product);
 };
 
 #endif

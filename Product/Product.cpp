@@ -32,13 +32,12 @@ void Product::printInfo() const {
     cout << "Calories (per 100g): " << calories << " kcal" << endl;
 }
 
-
 istream& operator>>(istream& in, Product& product) {
     cout << "Enter product details:" << endl;
     cout << "ID: ";
     in >> product.id;
     cout << "Name: ";
-    in.ignore();
+    in.ignore(); // ігноруємо залишковий символ нової строки
     getline(in, product.name);
     cout << "Manufacturer: ";
     getline(in, product.manufacturer);
@@ -55,4 +54,16 @@ istream& operator>>(istream& in, Product& product) {
     in >> product.calories;
 
     return in;
+}
+
+ostream& operator<<(ostream& out, const Product& product) {
+    out << "ID: " << product.id << endl;
+    out << "Name: " << product.name << endl;
+    out << "Manufacturer: " << product.manufacturer << endl;
+    out << "Price: $" << product.price << endl;
+    out << "Shelf Life: " << product.shelfLife << " days" << endl;
+    out << "Quantity: " << product.quantity << endl;
+    out << "Composition: " << product.composition << endl;
+    out << "Calories (per 100g): " << product.calories << " kcal" << endl;
+    return out;
 }
