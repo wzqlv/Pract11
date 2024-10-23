@@ -42,8 +42,9 @@ public:
     void printInfo() const;
 
     friend istream& operator>>(istream& in, Product& product);
-
     friend ostream& operator<<(ostream& out, const Product& product);
+
+    bool operator==(const Product& other) const;
 };
 
 #endif

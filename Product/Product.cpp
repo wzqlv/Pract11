@@ -37,7 +37,7 @@ istream& operator>>(istream& in, Product& product) {
     cout << "ID: ";
     in >> product.id;
     cout << "Name: ";
-    in.ignore(); // ігноруємо залишковий символ нової строки
+    in.ignore();
     getline(in, product.name);
     cout << "Manufacturer: ";
     getline(in, product.manufacturer);
@@ -66,4 +66,15 @@ ostream& operator<<(ostream& out, const Product& product) {
     out << "Composition: " << product.composition << endl;
     out << "Calories (per 100g): " << product.calories << " kcal" << endl;
     return out;
+}
+
+bool Product::operator==(const Product& other) const {
+    return id == other.id &&
+           name == other.name &&
+           manufacturer == other.manufacturer &&
+           price == other.price &&
+           shelfLife == other.shelfLife &&
+           quantity == other.quantity &&
+           composition == other.composition &&
+           calories == other.calories;
 }
