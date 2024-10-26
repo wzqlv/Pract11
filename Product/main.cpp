@@ -3,21 +3,41 @@
 
 using namespace std;
 
+int showMenu() {
+    int choice;
+    cout << "\nВиберіть клас для створення об'єкта:\n";
+    cout << "1. Medicine\n";
+    cout << "Ваш вибір: ";
+    cin >> choice;
+    return choice;
+}
+
 int main() {
-    Medicine medicine1, medicine2;
+    Product* products[5];
+    int choice;
 
-    cin >> medicine1 >> medicine2;
+    for (int i = 0; i < 5; ++i) {
+        choice = showMenu();
 
-    cout << "\nMedicine 1 details:\n" << medicine1 << endl;
-    cout << "Medicine 2 details:\n" << medicine2 << endl;
-
-    if (medicine1 == medicine2) {
-        cout << "\nMedicine 1 is equal to Medicine 2\n";
-    } else {
-        cout << "\nMedicine 1 is not equal to Medicine 2\n";
+        switch (choice) {
+        case 1: {
+            products[i] = new Medicine();
+            cin >> *products[i];
+            break;
+        }
+        default:
+            cout << "Невірний вибір. Спробуйте знову.\n";
+            --i;
+            break;
+        }
     }
 
-    cout << "\nType of medicine1: " << medicine1.getType() << endl;
+
+    cout << "\nДані про створені об'єкти:\n";
+    for (int i = 0; i < 5; ++i) {
+        cout << *products[i] << endl;
+        delete products[i];
+    }
 
     return 0;
 }

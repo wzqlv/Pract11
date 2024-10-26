@@ -14,7 +14,6 @@ protected:
     string manufacturer;
     double price;
     int shelfLife;
-
 public:
     Product(int id = 0, const string& name = "", const string& manufacturer = "", double price = 0.0, int shelfLife = 0);
 
