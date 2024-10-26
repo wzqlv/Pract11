@@ -30,12 +30,13 @@ public:
     void setPrice(double price);
     void setShelfLife(int shelfLife);
 
-    void printInfo() const;
+    virtual void printInfo() const = 0;
+    virtual string getType() const = 0;
 
     friend istream& operator>>(istream& in, Product& product);
     friend ostream& operator<<(ostream& out, const Product& product);
 
-    bool operator==(const Product& other) const;
+    virtual bool operator==(const Product& other) const;
 };
 
 class Medicine : public Product {
@@ -52,12 +53,13 @@ public:
     void setPrescriptionRequired(bool prescriptionRequired);
     void setActiveSubstances(const vector<string>& activeSubstances);
 
-    void printInfo() const;
+    void printInfo() const override;
+    string getType() const override;
 
     friend istream& operator>>(istream& in, Medicine& medicine);
     friend ostream& operator<<(ostream& out, const Medicine& medicine);
 
-    bool operator==(const Medicine& other) const;
+    bool operator==(const Medicine& other) const ;
 };
 
 #endif

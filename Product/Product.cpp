@@ -15,14 +15,6 @@ void Product::setManufacturer(const string& manufacturer) { this->manufacturer =
 void Product::setPrice(double price) { this->price = price; }
 void Product::setShelfLife(int shelfLife) { this->shelfLife = shelfLife; }
 
-void Product::printInfo() const {
-    cout << "ID: " << id << endl;
-    cout << "Name: " << name << endl;
-    cout << "Manufacturer: " << manufacturer << endl;
-    cout << "Price: $" << price << endl;
-    cout << "Shelf Life: " << shelfLife << " days" << endl;
-}
-
 istream& operator>>(istream& in, Product& product) {
     cout << "Enter product details:" << endl;
     cout << "ID: ";
@@ -40,11 +32,7 @@ istream& operator>>(istream& in, Product& product) {
 }
 
 ostream& operator<<(ostream& out, const Product& product) {
-    out << "ID: " << product.id << endl;
-    out << "Name: " << product.name << endl;
-    out << "Manufacturer: " << product.manufacturer << endl;
-    out << "Price: $" << product.price << endl;
-    out << "Shelf Life: " << product.shelfLife << " days" << endl;
+    product.printInfo();
     return out;
 }
 
@@ -66,7 +54,11 @@ void Medicine::setPrescriptionRequired(bool prescriptionRequired) { this->prescr
 void Medicine::setActiveSubstances(const vector<string>& activeSubstances) { this->activeSubstances = activeSubstances; }
 
 void Medicine::printInfo() const {
-    Product::printInfo();
+    cout << "ID: " << id << endl;
+    cout << "Name: " << name << endl;
+    cout << "Manufacturer: " << manufacturer << endl;
+    cout << "Price: $" << price << endl;
+    cout << "Shelf Life: " << shelfLife << " days" << endl;
     cout << "Prescription Required: " << (prescriptionRequired ? "Yes" : "No") << endl;
     cout << "Active Substances: ";
     for (const string& substance : activeSubstances) {
@@ -75,6 +67,9 @@ void Medicine::printInfo() const {
     cout << endl;
 }
 
+string Medicine::getType() const {
+    return "Medicine";
+}
 
 istream& operator>>(istream& in, Medicine& medicine) {
     in >> static_cast<Product&>(medicine);
@@ -95,13 +90,7 @@ istream& operator>>(istream& in, Medicine& medicine) {
 }
 
 ostream& operator<<(ostream& out, const Medicine& medicine) {
-    out << static_cast<const Product&>(medicine);
-    out << "Prescription Required: " << (medicine.prescriptionRequired ? "Yes" : "No") << endl;
-    out << "Active Substances: ";
-    for (const string& substance : medicine.activeSubstances) {
-        out << substance << " ";
-    }
-    out << endl;
+    medicine.printInfo();
     return out;
 }
 
