@@ -4,24 +4,29 @@
 using namespace std;
 
 int main() {
-    Product object1, object2, object3;
+    Product product1, product2;
+    Medicine medicine1, medicine2;
 
-    cin >> object1 >> object2 >> object3;
+    cin >> product1 >> product2;
 
-    cout << "\nProduct 1 details:" << endl << object1 << endl;
-    cout << "\nProduct 2 details:" << endl << object2 << endl;
-    cout << "\nProduct 3 details:" << endl << object3 << endl;
+    cin >> medicine1 >> medicine2;
 
-    if (object1 == object2) {
-        cout << "\nProduct 1 is equal to Product 2" << endl;
+    cout << "\nProduct 1 details:\n" << product1 << endl;
+    cout << "Product 2 details:\n" << product2 << endl;
+
+    cout << "\nMedicine 1 details:\n" << medicine1 << endl;
+    cout << "Medicine 2 details:\n" << medicine2 << endl;
+
+    if (product1 == product2) {
+        cout << "\nProduct 1 is equal to Product 2\n";
     } else {
-        cout << "\nProduct 1 is not equal to Product 2" << endl;
+        cout << "\nProduct 1 is not equal to Product 2\n";
     }
 
-    if (object2 == object3) {
-        cout << "\nProduct 2 is equal to Product 3" << endl;
+    if (medicine1 == medicine2) {
+        cout << "\nMedicine 1 is equal to Medicine 2\n";
     } else {
-        cout << "\nProduct 2 is not equal to Product 3" << endl;
+        cout << "\nMedicine 1 is not equal to Medicine 2\n";
     }
 
     return 0;

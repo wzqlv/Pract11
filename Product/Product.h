@@ -3,41 +3,32 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Product {
-private:
+protected:
     int id;
     string name;
     string manufacturer;
     double price;
     int shelfLife;
-    int quantity;
-    string composition;
-    double calories;
 
 public:
-
-    Product(int id = 0, const string& name = "", const string& manufacturer = "", double price = 0.0, int shelfLife = 0, int quantity = 0, const string& composition = "", double calories = 0.0);
+    Product(int id = 0, const string& name = "", const string& manufacturer = "", double price = 0.0, int shelfLife = 0);
 
     int getId() const;
     string getName() const;
     string getManufacturer() const;
     double getPrice() const;
     int getShelfLife() const;
-    int getQuantity() const;
-    string getComposition() const;
-    double getCalories() const;
 
     void setId(int id);
     void setName(const string& name);
     void setManufacturer(const string& manufacturer);
     void setPrice(double price);
     void setShelfLife(int shelfLife);
-    void setQuantity(int quantity);
-    void setComposition(const string& composition);
-    void setCalories(double calories);
 
     void printInfo() const;
 
@@ -45,6 +36,28 @@ public:
     friend ostream& operator<<(ostream& out, const Product& product);
 
     bool operator==(const Product& other) const;
+};
+
+class Medicine : public Product {
+private:
+    bool prescriptionRequired;
+    vector<string> activeSubstances;
+
+public:
+    Medicine(int id = 0, const string& name = "", const string& manufacturer = "", double price = 0.0, int shelfLife = 0, bool prescriptionRequired = false, const vector<string>& activeSubstances = {});
+
+    bool isPrescriptionRequired() const;
+    vector<string> getActiveSubstances() const;
+
+    void setPrescriptionRequired(bool prescriptionRequired);
+    void setActiveSubstances(const vector<string>& activeSubstances);
+
+    void printInfo() const;
+
+    friend istream& operator>>(istream& in, Medicine& medicine);
+    friend ostream& operator<<(ostream& out, const Medicine& medicine);
+
+    bool operator==(const Medicine& other) const;
 };
 
 #endif
